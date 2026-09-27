@@ -1,16 +1,235 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-        h1 { color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>山田 太郎 研究室 | Taro Yamada Laboratory</title>
+  <style>
+    /* 1. 基本スタイル（全体設定） */
+    :root {
+      --main-color: #1a2a3a;      /* メインのダークブルー */
+      --accent-color: #2b6cb0;    /* リンク・アクセントカラー */
+      --bg-color: #fcfcfc;        /* 背景色 */
+      --text-color: #333333;      /* 本文の文字色 */
+      --border-color: #e2e8f0;    /* 枠線色 */
+      --sidebar-width: 280px;     /* サイドバーの幅 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* 2. 全体レイアウト（サイドバー + メインコンテンツ） */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    /* 3. 左側：サイドバー設定 */
+    .sidebar {
+      width: var(--sidebar-width);
+      padding: 40px 30px;
+      border-right: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .site-title h1 {
+      font-size: 1.25rem;
+      color: var(--main-color);
+      margin-bottom: 4px;
+    }
+
+    .site-title p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin: 40px 0;
+    }
+
+    .nav-links li {
+      margin-bottom: 12px;
+    }
+
+    .nav-links a {
+      color: var(--text-color);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .sidebar-footer {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    /* 4. 右側：メインコンテンツ設定 */
+    .main-content {
+      flex: 1;
+      padding: 50px 60px;
+      max-width: 800px;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--main-color);
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    .profile-meta {
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    /* 新着情報リストのスタイル */
+    .news-list {
+      list-style: none;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 20px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .news-date {
+      font-size: 0.85rem;
+      color: #777;
+      min-width: 90px;
+    }
+
+    /* 5. レスポンシブ対応（スマホ表示） */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .main-content {
+        padding: 30px 20px;
+      }
+
+      .news-item {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>ようこそ！</h1>
-    <p>GitHub Pagesで作成したホームページです。</p>
+
+  <div class="container">
+    <!-- 左側：ナビゲーションサイドバー -->
+    <aside class="sidebar">
+      <div>
+        <div class="site-title">
+          <h1>山田 太郎 研究室</h1>
+          <p>Taro Yamada Lab.</p>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#about">プロフィール</a></li>
+            <li><a href="#news">新着情報</a></li>
+            <li><a href="#research">研究内容</a></li>
+            <li><a href="#publications">研究業績</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <p>© 2026 Taro Yamada</p>
+      </div>
+    </aside>
+
+    <!-- 右側：メインコンテンツ -->
+    <main class="main-content">
+      
+      <!-- プロフィールセクション -->
+      <section id="about">
+        <h2>プロフィール</h2>
+        <p class="profile-meta">〇〇大学大学院 経営学研究科 准教授 / 博士（経営学）</p>
+        <p>専門分野は〇〇研究および〇〇分析。主にデータを用いた実証研究を行っています。最近の研究では、企業統治（コーポレート・ガバナンス）やサステナビリティ情報開示の影響に関心を持っています。</p>
+      </section>
+
+      <!-- 新着情報セクション -->
+      <section id="news">
+        <h2>新着情報</h2>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">2026.09.15</span>
+            <span class="news-text">論文 "Sample Title of Research Paper" が学会誌に採択されました。</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">2026.04.01</span>
+            <span class="news-text">科研費（基盤研究C）に採択されました。</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 研究内容セクション -->
+      <section id="research">
+        <h2>主な研究テーマ</h2>
+        <ul>
+          <li>テーマ1：経営者の意思決定における会計数値の影響</li>
+          <li>テーマ2：企業におけるダイバーシティと業績の相関関係</li>
+        </ul>
+      </section>
+
+      <!-- お問い合わせ -->
+      <section id="contact">
+        <h2>お問い合わせ</h2>
+        <p>Mail: yamada[at]example.ac.jp</p>
+        <p>Office: 〇〇キャンパス 〇号館 〇号室</p>
+      </section>
+
+    </main>
+  </div>
+
 </body>
 </html>
